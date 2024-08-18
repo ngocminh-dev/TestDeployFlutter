@@ -33,7 +33,6 @@ export 'package:geolocator/geolocator.dart';
 export 'package:get_it/get_it.dart';
 export 'package:go_router/go_router.dart';
 export 'package:google_fonts/google_fonts.dart';
-export 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // export 'package:html/dom.dart' hide Text;
 export 'package:http_parser/http_parser.dart';
