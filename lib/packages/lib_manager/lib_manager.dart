@@ -20,7 +20,7 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_crashlytics/firebase_crashlytics.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:firebase_storage/firebase_storage.dart';
-export 'package:flutter/material.dart' hide Flow;
+export 'package:flutter/material.dart' hide Flow,CarouselController;
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:flutter_html/flutter_html.dart' hide Marker;
 export 'package:flutter_image_compress/flutter_image_compress.dart';
