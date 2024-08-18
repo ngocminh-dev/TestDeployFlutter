@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "829565695912",
+    "project_id": "face2-4aa82",
+    "storage_bucket": "face2-4aa82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829565695912:android:e267db6349c7dd7e390f9d",
+        "android_client_info": {
+          "package_name": "vn.com.photo_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS1nqkiexU59DiCccYscE3vADpCydj0LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829565695912:android:3e26e61f25bc9eb5390f9d",
+        "android_client_info": {
+          "package_name": "vn.com.photo_ai2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS1nqkiexU59DiCccYscE3vADpCydj0LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
