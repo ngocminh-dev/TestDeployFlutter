@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:photo_ai/features/face_ai/index.dart';
 import 'package:photo_ai/features/widgets/circular_app_icon_button.dart';
@@ -164,8 +165,7 @@ class _AIGenResultPageState extends State<AIGenResultPage> {
             return _buildSingleImage(imageUrl, context);
           },
         );
-      }).toList(),
-    );
+      }).toList());
   }
 
   Widget _buildSingleImage(String imageUrl, BuildContext context) {
