@@ -8,7 +8,7 @@ export 'package:path_provider/path_provider.dart';
 export 'package:barcode/barcode.dart';
 export 'package:bot_toast/bot_toast.dart';
 export 'package:cached_network_image/cached_network_image.dart';
-export 'package:carousel_slider/carousel_slider.dart' hide CarouselController;
+//export 'package:carousel_slider/carousel_slider.dart';
 export 'package:collection/collection.dart';
 export 'package:device_info_plus/device_info_plus.dart';
 export 'package:dio/dio.dart';

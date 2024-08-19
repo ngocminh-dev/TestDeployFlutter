@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:photo_ai/features/face_ai/index.dart';
 import 'package:photo_ai/features/widgets/circular_app_icon_button.dart';
@@ -144,9 +145,9 @@ class _AIGenResultPageState extends State<AIGenResultPage> {
   }
 
   Widget _buildCarouselSlider(List<String> images) {
-    return CarouselSlider(
+    return cs.CarouselSlider(
       key: _controller.carouselKey,
-      options: CarouselOptions(
+      options: cs.CarouselOptions(
           height: context.height - 200,
           enableInfiniteScroll: true,
           initialPage: 0,
@@ -164,8 +165,7 @@ class _AIGenResultPageState extends State<AIGenResultPage> {
             return _buildSingleImage(imageUrl, context);
           },
         );
-      }).toList(),
-    );
+      }).toList());
   }
 
   Widget _buildSingleImage(String imageUrl, BuildContext context) {
