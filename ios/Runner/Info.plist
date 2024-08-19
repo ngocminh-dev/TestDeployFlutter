@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -12,10 +14,6 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to access your photo library</string>
-    <key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
-    <true/>
 	<key>CFBundleName</key>
 	<string>photo_ai</string>
 	<key>CFBundlePackageType</key>
@@ -29,9 +27,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-    <string>Cho phép truy cập chụp ảnh và quay video để sử dụng hình ảnh cho đánh giá của bạn.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Cho phép truy cập hình ảnh và nội dung nghe nhìn để sử dụng hình ảnh lên đánh giá của bạn.</string>
+	<string>Cho phép truy cập chụp ảnh và quay video để sử dụng hình ảnh cho đánh giá của bạn.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Cho phép truy cập hình ảnh và nội dung nghe nhìn để sử dụng hình ảnh lên đánh giá của bạn.</string>
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -49,9 +51,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>

@@ -1,5 +1,5 @@
 #!/bin/sh
-
+flutter pub run build_runner build
 #  Script.sh
 #  Runner
 #
