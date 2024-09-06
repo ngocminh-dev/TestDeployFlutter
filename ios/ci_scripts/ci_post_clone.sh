@@ -14,7 +14,9 @@ export PATH="$PATH:$HOME/flutter/bin"
 flutter precache --ios
 
 # Install Flutter dependencies.
-flutter pub get
+
+make pub_get_all
+make generate_sources_all
 
 # Install CocoaPods using Homebrew.
 HOMEBREW_NO_AUTO_UPDATE=1 # disable homebrew's automatic updates.
