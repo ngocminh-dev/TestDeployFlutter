@@ -18,6 +18,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
   late HomeController _controller = HomeController();
 
+  final _versionCheckLoading =
+  ElaboratedLoadingOverlay(url: Assets.loadingVersionCheck);
+  final _versionDownloadLoading =
+  ElaboratedLoadingOverlay(url: Assets.loadingVersionDownload);
+
   HomeController _createController(BuildContext context) {
     _controller = HomeController();
     return _controller;
@@ -25,14 +30,9 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
 
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) async {
-    if(widget.checkNavigate) {
-      await _controller.checkPreviousImage(context: context);
-      if (_controller.hasPreviousImage()) {
-        if (context.mounted) {
-          context.navigatePhotoEnhanceReplacement(
-              pathFile: _controller.getPreviousImagePath()!);
-        }
-      }
+    await _buildCheckBanner(context);
+    if(context.mounted) {
+      await _checkNavigate(context);
     }
   }
 
@@ -51,23 +51,6 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(context.loc.common_search, style: context.heading5),
-                  IconButton(
-                    onPressed: () async {
-                      if (context.mounted) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ClickManagementPage(
-                                      countryCode: Config.countryCode,
-                                    )));
-                      }
-                    },
-                    icon: const Icon(
-                      Icons.shopping_bag_rounded,
-                      size: 32,
-                      color: Color(0xFF9A81FA),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -79,6 +62,43 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
         );
       }),
     );
+  }
+
+  Future<void> _checkNavigate(BuildContext context) async {
+    if(widget.checkNavigate) {
+      await _controller.checkPreviousImage(context: context);
+      if (_controller.hasPreviousImage()) {
+        if (context.mounted) {
+          context.navigatePhotoEnhanceReplacement(
+              pathFile: _controller.getPreviousImagePath()!);
+        }
+      }
+    }
+  }
+
+  Future<void> _buildDownloadBanner(BuildContext context) async {
+    _versionDownloadLoading.showLoadingOverlay(context);
+    await _controller.downloadUpdate(context);
+    _versionDownloadLoading.removeLoadingOverlay();
+    if(context.mounted) {
+      _buildRestartBanner(context);
+    }
+  }
+
+  Future<void> _buildRestartBanner(BuildContext context) async {
+    ShowToastController.showToast(context, type: 'Successfully', message: 'Download successful, please restart the app to apply the newest changes');
+  }
+
+  Future<void> _buildCheckBanner(BuildContext context) async {
+    if(!_controller.isShoreBirdAvailable()) {
+      return;
+    }
+    _versionCheckLoading.showLoadingOverlay(context);
+    bool hasUpdate = await _controller.checkForUpdate(context);
+    _versionCheckLoading.removeLoadingOverlay();
+    if(hasUpdate && context.mounted) {
+      _buildDownloadBanner(context);
+    }
   }
 
   Widget _buildUI(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:photo_ai/generated/index.dart';
 
 import '../../init/sl.dart';
 import '../../packages/index.dart';
-import '../showToast/show_toast_controller.dart';
+import '../show_toast/show_toast_controller.dart';
 import 'click_page.dart';
 
 class ClickManagement {

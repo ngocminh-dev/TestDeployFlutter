@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:photo_ai/generated/extension.dart';
 
 class AnimationLoading extends StatefulWidget {
   final String urlFromAssets;
-  const AnimationLoading({super.key, required this.urlFromAssets});
+  final String text;
+  const AnimationLoading({super.key, required this.urlFromAssets, required this.text});
 
   @override
   State<AnimationLoading> createState() => _AnimationLoadingState();
@@ -19,24 +19,23 @@ class _AnimationLoadingState extends State<AnimationLoading> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return Container(
         constraints: BoxConstraints(
           minWidth: MediaQuery.of(context).size.width,
           minHeight: MediaQuery.of(context).size.height
         ),
-        decoration: BoxDecoration(
-          color: const Color(0xFFE0D8FF).withOpacity(1),
+        decoration: const BoxDecoration(
+          color: Colors.black38,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Lottie.asset(widget.urlFromAssets),
             const SizedBox(height: 32,),
-            WaveText(context.loc.loading),
+            if(widget.text.isNotEmpty)
+              WaveText(widget.text)
           ],
         ),
-      ),
     );
   }
 }

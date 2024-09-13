@@ -288,12 +288,29 @@ class ApiServiceImpl extends ApiService {
     // TODO: implement magicBrushGenerate
     try {
       List<String> result =
-          await _dioService.postList(endpoint: 'magic-paint/generate', data: {
+      await _dioService.postList(endpoint: 'magic-paint/generate', data: {
         'user_image': userImageUrl, 'segmented_user_image': segmentImageUrl,
         'prompt': prompt,
       });
       return result;
     } on Exception {
+      return [];
+    }
+  }
+  @override
+  Future<List<String>> blurBackground({required String url}) async {
+    try {
+      List<String> result = await _dioService.postList(
+        endpoint: 'blur-bg/generate',
+        data: {"image_link": url},
+      );
+      print(result);
+      return result;
+    } on DioException catch (e) {
+      print('DioException is: ${e.error}');
+      return [];
+    } catch (er) {
+      print(er);
       return [];
     }
   }

@@ -43,7 +43,10 @@ class RepositoryImpl extends Repository {
   Future<List<String>> enhanceImage({required String url}) {
     return _apiService.enhanceImage(url: url);
   }
-
+  @override
+  Future<List<String>> blurBackground({required String url}) {
+    return _apiService.blurBackground(url: url);
+  }
   @override
   Future<String?> downloadImage({
     required String imageUrl,
@@ -125,7 +128,6 @@ class RepositoryImpl extends Repository {
     );
   }
 
-
   @override
   Future<List<String>> generateInPainting({
     required String url,
@@ -158,10 +160,9 @@ class RepositoryImpl extends Repository {
     return _apiService.getImageTemplatesFaceSwap();
   }
 
-  @override
-  Future<List<String>> magicBrushGenerate({required String userImageUrl, required String segmentImageUrl, required String prompt}) {
-    return _apiService.magicBrushGenerate(userImageUrl: userImageUrl, segmentImageUrl: segmentImageUrl, prompt: prompt);
-  }
 
-
+@override
+Future<List<String>> magicBrushGenerate({required String userImageUrl, required String segmentImageUrl, required String prompt}) {
+  return _apiService.magicBrushGenerate(userImageUrl: userImageUrl, segmentImageUrl: segmentImageUrl, prompt: prompt);
+}
 }

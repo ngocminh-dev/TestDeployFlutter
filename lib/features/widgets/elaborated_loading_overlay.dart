@@ -4,9 +4,10 @@ import 'loading_page.dart';
 
 class ElaboratedLoadingOverlay {
   final String url;
+  final String text;
   late final OverlayEntry _loadingOverlayEntry;
 
-  ElaboratedLoadingOverlay({required this.url}) {
+  ElaboratedLoadingOverlay({required this.url, this.text = ""}) {
     _init();
   }
 
@@ -15,6 +16,7 @@ class ElaboratedLoadingOverlay {
       builder: (context) =>
           AnimationLoading(
             urlFromAssets: url,
+            text: text,
           ),
     );
   }

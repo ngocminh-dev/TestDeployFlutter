@@ -14,7 +14,7 @@ abstract class ApiService {
   });
 
   Future<List<String>> enhanceImage({required String url});
-
+  Future<List<String>> blurBackground({required String url});
   Future<String?> downloadImage({
     required String imageUrl,
     required String pathFile,
@@ -36,6 +36,7 @@ abstract class ApiService {
     required String segmentImageUrl,
     required String prompt,
   });
+
 
   Future<List<String>> genByImage({
     required String userPhoto,

@@ -100,12 +100,4 @@ class AIGenResultController extends Cubit<AIGenResultState> {
   Future<bool> checkClicks(BuildContext context) {
     return _clickManager.checkClickAndHandle(context);
   }
-
-  Future<void> enhance(void Function(List<String> images) callback) async {
-    final file = await _cache.getSingleFile(state.images[state.currentIndex]);
-    String url = await _getUploadFileUrl(file.path);
-    //TODO: Change to super enhance
-    List<String> images = await _repository.enhanceImage(url: url);
-    callback(images);
-  }
 }

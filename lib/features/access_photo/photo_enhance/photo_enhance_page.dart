@@ -154,7 +154,7 @@ class _PhotoEnhancePageState extends State<PhotoEnhancePage>
                 onTapCallback: () async {
                   bool check = await _controller.checkClicks(context);
                   if (check && context.mounted) {
-                    _handleEnhance(context, isNormal: true);
+                    _handleEnhance(context);
                   }
                 },
                 title: context.loc.normal_enhance,
@@ -163,17 +163,6 @@ class _PhotoEnhancePageState extends State<PhotoEnhancePage>
               context.width16X,
               if (state.hasFace)
                 Row(children: [
-                  AppIconButtonVertical(
-                    onTapCallback: () async {
-                      bool check = await _controller.checkClicks(context);
-                      if (check && context.mounted) {
-                        _handleEnhance(context, isNormal: false);
-                      }
-                    },
-                    title: context.loc.super_enhance,
-                    icon: Assets.iconEnhanceSuper,
-                  ),
-                  context.width16X,
                   AppIconButtonVertical(
                     icon: Assets.outlineMagicpen,
                     title: context.loc.super_style,
@@ -207,16 +196,6 @@ class _PhotoEnhancePageState extends State<PhotoEnhancePage>
                       }),
                   context.width16X,
                   AppIconButtonVertical(
-                      title: context.loc.make_up,
-                      icon: Assets.iconMakeUp,
-                      onTapCallback: () async {
-                        bool check = await _controller.checkClicks(context);
-                        if (check && context.mounted) {
-                          _navigateMakeUp(context);
-                        }
-                      }),
-                  context.width16X,
-                  AppIconButtonVertical(
                     onTapCallback: () async {
                       bool check = await _controller.checkClicks(context);
                       if (check && context.mounted) {
@@ -225,6 +204,17 @@ class _PhotoEnhancePageState extends State<PhotoEnhancePage>
                     },
                     title: context.loc.magic_brush,
                     icon: Assets.iconMagicBrush,
+                  ),
+                  context.width16X,
+                  AppIconButtonVertical(
+                    onTapCallback: () async {
+                      bool check = await _controller.checkClicks(context);
+                      if (check && context.mounted) {
+                        _handleBlur(context);
+                      }
+                    },
+                    title: context.loc.blur_background,
+                    icon: Assets.iconBlurBackground,
                   ),
                   context.width16X,
                 ]),
@@ -276,15 +266,13 @@ class _PhotoEnhancePageState extends State<PhotoEnhancePage>
     context.navigateRealStyle(
         pathFile: _controller.pathFile, needUpload: needUpload);
   }
-
   void _navigateMagicBrush(BuildContext context) {
     String needUpload =
     _controller.pathFile == widget.filePath ? 'true' : 'false';
     context.navigateMagicBrushPage(
-         pathFile: _controller.pathFile, needUpload: '');
+        pathFile: _controller.pathFile, needUpload: '');
   }
-
-  void _handleEnhance(BuildContext context, {required bool isNormal}) async {
+  void _handleEnhance(BuildContext context) async {
     _loadingOverlay.showLoadingOverlay(context);
     _controller.generate((images) async {
       if (context.mounted) {
@@ -305,6 +293,29 @@ class _PhotoEnhancePageState extends State<PhotoEnhancePage>
                   context.loc.overloaded_error);
         }
       }
-    }, isNormal: isNormal);
+    });
+  }
+  void _handleBlur(BuildContext context) async {
+    _loadingOverlay.showLoadingOverlay(context);
+    _controller.generateBlur((images) async {
+      if (context.mounted) {
+        _loadingOverlay.removeLoadingOverlay();
+        if (images.isNotEmpty) {
+          await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AIGenResultPage(
+                images: images,
+              ),
+            ),
+          );
+        } else {
+          ShowToastController.showToast(context,
+              type: 'Error',
+              message:
+              context.loc.overloaded_error);
+        }
+      }
+    },);
   }
 }

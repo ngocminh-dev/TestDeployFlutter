@@ -20,7 +20,7 @@ abstract class Repository {
   Future<String> createAnonymousUser();
 
   Future<List<String>> enhanceImage({required String url});
-
+  Future<List<String>> blurBackground({required String url});
   static NetworkSrc createNetworkSrc({required Local local}) {
     return NetworkSrc.instance();
   }

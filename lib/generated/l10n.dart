@@ -620,10 +620,10 @@ class AppLocale {
     );
   }
 
-  /// `Làm đẹp thường`
+  /// `Làm đẹp`
   String get normal_enhance {
     return Intl.message(
-      'Làm đẹp thường',
+      'Làm đẹp',
       name: 'normal_enhance',
       desc: '',
       args: [],
@@ -740,7 +740,7 @@ class AppLocale {
     );
   }
 
-  /// `Server đang quá tải. Hãy thử lại sau ít phút.`
+  /// `Bạn chưa nhập mô tả của mình.`
   String get no_prompt_error {
     return Intl.message(
       'Bạn chưa nhập mô tả của mình.',
@@ -850,6 +850,15 @@ class AppLocale {
     );
   }
 
+  /// `Làm mờ nền`
+  String get blur_background {
+    return Intl.message(
+      'Blur Background',
+      name: 'blur_background',
+      desc: '',
+      args: [],
+    );
+  }
   // skipped getter for the '' key
 }
 

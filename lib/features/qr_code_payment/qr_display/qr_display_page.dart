@@ -16,6 +16,7 @@ class QRDisplayPage extends StatefulWidget {
 
 class _QRDisplayPageState extends State<QRDisplayPage> {
   late final QrDisplayController _controller;
+
   QrDisplayController _createController() {
     _controller = QrDisplayController(widget.paymentInfo);
     return _controller;
@@ -31,16 +32,21 @@ class _QRDisplayPageState extends State<QRDisplayPage> {
               state.paymentInfo?.order_id ?? '');
           if (state.status?.status == 'FAILED') {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              ShowToastController.showToast(context, type: 'Warning',
-                  message: context.loc.QR_expired_message);
+              ShowToastController.showToast(context,
+                  type: 'Warning',
+                  message: context.loc.QR_expired_message, onClose: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              });
             });
           } else if (state.status?.status == 'COMPLETED') {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              ShowToastController.showToast(
-                context,
-                type: 'Successfully',
-                message: context.loc.QR_success_message,
-              );
+              ShowToastController.showToast(context,
+                  type: 'Successfully',
+                  message: context.loc.QR_success_message, onClose: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              });
             });
           }
           return Scaffold(

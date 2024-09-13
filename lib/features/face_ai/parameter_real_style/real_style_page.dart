@@ -325,7 +325,6 @@ class _RealStylePageState extends State<RealStylePage> {
               builder: (context) =>
                   AIGenResultPage(
                     images: images,
-                    canEnhance: true,
                   ),
             ),
           ).then((value) {

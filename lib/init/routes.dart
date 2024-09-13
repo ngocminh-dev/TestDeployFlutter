@@ -1,8 +1,8 @@
-import 'package:photo_ai/features/face_ai/magic_brush/index.dart';
 import 'package:photo_ai/features/intro_slider/slider/slider_page.dart';
 import 'package:photo_ai/features/intro_slider/splash/splash_page.dart';
 
 import '../features/face_ai/index.dart';
+import '../features/face_ai/magic_brush/magic_brush_page.dart';
 import '../features/index.dart';
 import '../packages/index.dart';
 
@@ -106,14 +106,13 @@ extension AppNavigator on BuildContext {
     });
   }
 
-  void navigateMagicBrushPage({required  String pathFile,required String needUpload}) {
-      pushNamed(AppRouter.magicBrush, queryParameters: {
-        'pathFile': pathFile,
-        'needUpload': needUpload,
-      });
-  }
+void navigateMagicBrushPage({required  String pathFile,required String needUpload}) {
+  pushNamed(AppRouter.magicBrush, queryParameters: {
+    'pathFile': pathFile,
+    'needUpload': needUpload,
+  });
 }
-
+}
 final GoRouter router = GoRouter(
   initialLocation: '/',
   debugLogDiagnostics: true,

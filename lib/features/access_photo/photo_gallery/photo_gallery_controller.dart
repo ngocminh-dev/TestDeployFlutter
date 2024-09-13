@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart' as syspaths;
 import '../../../init/previous_image_storage.dart';
 import '../../../init/sl.dart';
 import '../../../packages/index.dart';
-import '../../showToast/show_toast_controller.dart';
+import '../../show_toast/show_toast_controller.dart';
 
 class PhotoGalleryController extends Cubit<PhotoGalleryState> {
   final _imageStorage = sl.get<PreviousImageStorage>();

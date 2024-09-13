@@ -5,5 +5,6 @@ part 'home_state.freezed.dart';
 class HomeState with _$HomeState {
   const factory HomeState({
     @Default(false) bool loading,
+    @Default(0) int currentPatchVersion,
   }) = _HomeState;
 }

@@ -91,8 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_face_warning": MessageLookupByLibrary.simpleMessage(
             "There are no faces in your photo. Some functions may not work correctly."),
         "normal": MessageLookupByLibrary.simpleMessage("Normal"),
-        "normal_enhance":
-            MessageLookupByLibrary.simpleMessage("Normal Enhance"),
+        "normal_enhance": MessageLookupByLibrary.simpleMessage("Enhance"),
         "out_of_clicks_warning": MessageLookupByLibrary.simpleMessage(
             "You\'ve run out of clicks. Purchase more clicks to continue this activity."),
         "overloaded_error": MessageLookupByLibrary.simpleMessage(

@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
-import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:photo_ai/features/face_ai/index.dart';
 import 'package:photo_ai/features/widgets/circular_app_icon_button.dart';
 import 'package:photo_ai/features/widgets/elaborated_loading_overlay.dart';
@@ -9,17 +8,15 @@ import 'package:photo_ai/generated/assets.dart';
 import 'package:photo_ai/generated/extension.dart';
 
 import '../../../packages/index.dart';
-import '../../showToast/show_toast_controller.dart';
+import '../../show_toast/show_toast_controller.dart';
 import '../../widgets/app_bar_component.dart';
 
 class AIGenResultPage extends StatefulWidget {
   final List<String> images;
   final Future<void> Function(void Function(List<String> images) callback,
       {required BuildContext context})? regenerateFunction;
-  final bool canEnhance;
-
   const AIGenResultPage(
-      {super.key, required this.images, this.regenerateFunction,  this.canEnhance = false});
+      {super.key, required this.images, this.regenerateFunction});
 
   @override
   State<AIGenResultPage> createState() => _AIGenResultPageState();
@@ -27,7 +24,6 @@ class AIGenResultPage extends StatefulWidget {
 
 class _AIGenResultPageState extends State<AIGenResultPage> {
   late AIGenResultController _controller;
-  final FlutterShareMe flutterShareMe = FlutterShareMe();
   final _loadingOverlay =
       ElaboratedLoadingOverlay(url: Assets.loadingAILoading);
 
@@ -66,13 +62,6 @@ class _AIGenResultPageState extends State<AIGenResultPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            if(widget.canEnhance)
-              CircularAppIconButton(
-                onTapCallback: () {
-                  _handleEnhance(context);
-                },
-                icon: Assets.iconEnhanceSuper,
-              ),
             if (widget.regenerateFunction != null)
               CircularAppIconButton(
                 onTapCallback: () async {
@@ -165,7 +154,8 @@ class _AIGenResultPageState extends State<AIGenResultPage> {
             return _buildSingleImage(imageUrl, context);
           },
         );
-      }).toList());
+      }).toList(),
+    );
   }
 
   Widget _buildSingleImage(String imageUrl, BuildContext context) {
@@ -175,7 +165,7 @@ class _AIGenResultPageState extends State<AIGenResultPage> {
       maxScale: 4,
       child: Container(
         width: context.width,
-        height: context.height-250,
+        height: context.height - 200,
         margin: const EdgeInsets.symmetric(horizontal: 3.0),
         decoration: BoxDecoration(
           color: context.color.white,
@@ -198,22 +188,5 @@ class _AIGenResultPageState extends State<AIGenResultPage> {
       dotsCount: dotsCount,
       position: currentIndex,
     );
-  }
-
-  void _handleEnhance(BuildContext context) async {
-    _loadingOverlay.showLoadingOverlay(context);
-    _controller.enhance((images) async {
-      if (context.mounted) {
-        _loadingOverlay.removeLoadingOverlay();
-        if (images.isNotEmpty) {
-          _controller.updateImageUrls(images);
-        } else {
-          ShowToastController.showToast(context,
-              type: 'Error',
-              message:
-              context.loc.overloaded_error);
-        }
-      }
-    });
   }
 }

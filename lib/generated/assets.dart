@@ -926,6 +926,7 @@ class Assets {
   static const String customSwitchOff = 'assets/icons/custom/switch_off.svg';
   static const String customSwitchOn = 'assets/icons/custom/switch_on.svg';
   static const String customZalo = 'assets/icons/custom/zalo.svg';
+  static const String flutterShorebird = 'shorebird.yaml';
   static const String iconAiLogo = 'assets/img/icon/ai_logo.png';
   static const String iconClick = 'assets/img/icon/click.png';
   static const String iconDownload = 'assets/img/icon/download.svg';
@@ -939,6 +940,7 @@ class Assets {
   static const String iconIap = 'assets/img/icon/iap.png';
   static const String iconMakeUp = 'assets/img/icon/make_up.svg';
   static const String iconMagicBrush = 'assets/icons/bold/magicpen.svg';
+  static const String iconBlurBackground = 'assets/icons/bold/blur.svg';
   static const String iconPaypal = 'assets/img/icon/paypal.png';
   static const String iconRealStyle = 'assets/img/icon/realStyle.png';
   static const String iconRealStyleSvg = 'assets/img/icon/real_style_svg.svg';
@@ -956,6 +958,8 @@ class Assets {
   static const String loadingAILoading = 'assets/loading/AI_Loading.json';
   static const String loadingNormalLoading = 'assets/loading/normal_loading.json';
   static const String loadingPaymentLoading = 'assets/loading/payment_Loading.json';
+  static const String loadingVersionCheck = 'assets/loading/version_check.json';
+  static const String loadingVersionDownload = 'assets/loading/version_download.json';
   static const String outline24Support = 'assets/icons/outline/24-support.svg';
   static const String outline3dCubeScan = 'assets/icons/outline/3d-cube-scan.svg';
   static const String outline3dRotate = 'assets/icons/outline/3d-rotate.svg';

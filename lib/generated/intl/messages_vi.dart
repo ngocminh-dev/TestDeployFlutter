@@ -92,8 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_face_warning": MessageLookupByLibrary.simpleMessage(
             "Ảnh của bạn không có khuôn mặt. Một số chức năng có thể sẽ không hoạt động"),
         "normal": MessageLookupByLibrary.simpleMessage("Bình thường"),
-        "normal_enhance":
-            MessageLookupByLibrary.simpleMessage("Làm đẹp thường"),
+        "normal_enhance": MessageLookupByLibrary.simpleMessage("Làm đẹp"),
         "out_of_clicks_warning": MessageLookupByLibrary.simpleMessage(
             "Bạn đã hết lượt click. Xin hãy mua thêm để tiếp tục."),
         "overloaded_error": MessageLookupByLibrary.simpleMessage(

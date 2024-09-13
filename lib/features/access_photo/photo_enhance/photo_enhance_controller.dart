@@ -5,7 +5,7 @@ import 'package:photo_ai/generated/extension.dart';
 import '../../../init/sl.dart';
 import '../../../packages/index.dart';
 import '../../click_management/click_management.dart';
-import '../../showToast/show_toast_controller.dart';
+import '../../show_toast/show_toast_controller.dart';
 import '../../widgets/face_decector_util.dart';
 import 'photo_enhance_state.dart';
 import 'package:image/image.dart' as img;
@@ -70,13 +70,13 @@ class PhotoEnhanceController extends Cubit<PhotoEnhanceState> {
     _urlFile = await storage.getDownloadURL();
   }
 
-  void generate(void Function(List<String> images) callback, {required bool isNormal}) async {
+  void generate(void Function(List<String> images) callback) async {
     if (_pathFile.isBlank) {
       callback([]);
       return;
     }
     if (_urlFile.isNotBlank) {
-      final images = await _generate(isNormal: isNormal);
+      final images = await _generate();
       callback(images);
       return;
     }
@@ -84,14 +84,39 @@ class PhotoEnhanceController extends Cubit<PhotoEnhanceState> {
       if (!_urlFile.isBlank) {
         // _generate();
         timer.cancel();
-        final images = await _generate(isNormal: isNormal);
+        final images = await _generate();
         callback(images);
       }
     });
   }
 
-  Future<List<String>> _generate({required bool isNormal}) async {
-    //TODO: Change this to have both normal and super enhance
+  void generateBlur(void Function(List<String> images) callback,) async {
+    if (_pathFile.isBlank) {
+      callback([]);
+      return;
+    }
+    if (_urlFile.isNotBlank) {
+      final images = await _generateBlur();
+      callback(images);
+      return;
+    }
+    Timer.periodic(100.milliseconds, (timer) async {
+      if (!_urlFile.isBlank) {
+        // _generate();
+        timer.cancel();
+        final images = await _generateBlur();
+        callback(images);
+      }
+    });
+  }
+
+  Future<List<String>> _generateBlur() async {
+
+    List<String> images = await _repository.blurBackground(url: _urlFile!);
+    return images;
+  }
+
+  Future<List<String>> _generate() async {
     List<String> images = await _repository.enhanceImage(url: _urlFile!);
     return images;
   }
